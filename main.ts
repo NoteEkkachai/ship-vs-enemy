@@ -3,16 +3,16 @@ input.onButtonPressed(Button.A, function () {
 })
 input.onButtonPressed(Button.AB, function () {
     Shoot = game.createSprite(Player.get(LedSpriteProperty.X), Player.get(LedSpriteProperty.Y))
+    if (Shoot.isTouching(Mnmmy)) {
+        game.addScore(1)
+    }
+    if (Shoot.get(LedSpriteProperty.Y) <= 0) {
+        Shoot.delete()
+    }
     Shoot.set(LedSpriteProperty.Brightness, 100)
     for (let index = 0; index < 4; index++) {
         Shoot.change(LedSpriteProperty.Y, -1)
         basic.pause(100)
-        if (Shoot.isTouching(Mnmmy)) {
-            game.addScore(1)
-        }
-        if (Shoot.get(LedSpriteProperty.Y) <= 0) {
-            Shoot.delete()
-        }
     }
 })
 input.onButtonPressed(Button.B, function () {
